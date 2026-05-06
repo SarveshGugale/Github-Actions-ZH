@@ -1,0 +1,23 @@
+name: sarvesh
+on:
+ push:
+   branches: [main]
+jobs:
+  Tech-details:
+     runs-on: ubuntu-latest
+     steps:
+       - name: kubernetes version & exp
+         run: echo "kubernetes 1.35 & exp 4"
+       - name: Docker version & exp
+         run: echo "Docker 1.3.5 & exp 4" 
+       - name: Terraform version & exp
+         run: echo "Terraform 1.4 & exp 4" 
+         
+  Edu-details:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Name of University
+         run: echo "Shivaji University"
+         
+         
+   
