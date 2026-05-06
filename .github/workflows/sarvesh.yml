@@ -15,5 +15,21 @@ jobs:
         run: echo "2029-2020"
       - name: Say thanks for update to user 
         run: echo "Hello $USER"
+
+  show-version:
+    runs-on: ubuntu-latest
+    steps:  
+      - name: version of pyhton
+        run: echo "python 3.14"
+      - name: version of Kubernetes
+        run: echo "kubernetes 1.35"
+      - name: version Docker
+        run: echo "Docker 1.2.2"
+      - name: version of Terraform
+        run: echo "Terraform 1.4.7"
+        
+        
+    
+    
   
     
