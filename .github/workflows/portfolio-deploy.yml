@@ -1,0 +1,26 @@
+name: portfolio
+on:
+ push:
+    branches: [main]
+
+jobs:
+  deploy:
+     runs-on: ubuntu-latest
+
+     steps:
+        - name: Checkout Code
+          uses: actions/Checkout@v4
+        
+         # Setup Github pages
+        - name: Setup Github Pages
+          uses: actions/configure-pages@v4
+
+          # static code artifacts
+        - name: Upload static files
+          uses: actions/upload-pages-artifact@v4
+
+        - name: Deploy on Github
+          uses: actions/deploy-pages@v4  
+
+
+
