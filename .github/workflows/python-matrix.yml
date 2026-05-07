@@ -1,0 +1,25 @@
+# it check python syntax with flake 8 libararies.
+
+name: lint 
+on:
+  push:
+    branches:[main]
+
+jobs:
+   validate:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout Code
+            uses: actions/Checkout@v4
+        steps: 
+          - name: Setup python
+            uses: actions/setup-python@v4
+            with: 
+               python-version: "3.14"
+
+          - name: intsall dependencies 
+            uses: pip intsall -r requriments.txt
+
+          - name: run linter
+            uses: flake8 app.py
