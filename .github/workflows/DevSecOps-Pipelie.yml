@@ -1,4 +1,4 @@
-name: DevSecops pipeline
+name: DevSecops End to End pipeline
 
 on:
  workflow_dispatch:
