@@ -1,6 +1,6 @@
 # it check python syntax with flake 8 libararies.
 
-name: lint 
+name: python lint 
 on:
   push:
     branches:[main]
