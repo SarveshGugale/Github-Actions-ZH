@@ -11,6 +11,8 @@ jobs:
            host: ${{secrets.EC2_SSH_HOST}}
            username: ${{secrets.EC2_SSH_USER}}
            key: ${{secrets.EC2_SSH_PRIVATE_KEY}}  
-           script:
-             echo "starting Deployment" 
-             mkdir DevOps 
+           script: | 
+              echo "starting Deployment" 
+              cd /home/ubuntu
+              mkdir -p DevOps
+              ls -l
