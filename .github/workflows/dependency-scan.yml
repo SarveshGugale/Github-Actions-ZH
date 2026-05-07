@@ -10,15 +10,13 @@ jobs:
          - name: Code Checkout
            uses: actions/checkout@v4
 
-         -  name: Setup Python 3.12
+         -  name: Setup Python 3.10
             uses: actions/setup-python@v4
             with:
-            python-version: "3.12"
+               python-version: "3.10"
 
          - name: pip Install pip audit
            run: pip install pip-audit
-           with:
-             python-version: "3.12"
 
          - name: Audit dependencies
            run: pip-audit -r requirements.txt 
