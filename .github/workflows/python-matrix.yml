@@ -1,4 +1,7 @@
-# it check python syntax with flake 8 libararies.
+# It check python syntax with flake 8 libararies.
+# Python linter is used for syntax issue or follow best practices
+
+# Error we got: Process complated with exit code 1 means expected 2 lines but found 1
 
 name: python lint
 
