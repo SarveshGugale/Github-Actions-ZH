@@ -16,18 +16,18 @@ jobs:
             python-version: ["3.10","3.11","3.12","3.13","3.14"]
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+        - name: Checkout Code
+          uses: actions/checkout@v4
 
-      - name: Setup Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}  # use stable version
+        - name: Setup Python ${{ matrix.python-version }}
+          uses: actions/setup-python@v4
+          with:
+           python-version: ${{ matrix.python-version }}  # use stable version
 
-      - name: Install dependencies
-        run: |
-          pip install flake8
-          pip install -r requirements.txt 
+        - name: Install dependencies
+          run: |
+           pip install flake8
+           pip install -r requirements.txt 
 
-      - name: Run linter
-        run: flake8 app.py
+        - name: Run linter
+          run: flake8 app.py
