@@ -27,6 +27,9 @@ jobs:
                 context: .
                 push: true
                 tags: |
-                   ${{ secrets.DOCKERHUB_USER }}/myapp:${{ github.ref_name }}
-                   ${{ secrets.DOCKERHUB_USER }}/myapp:latest
-                   ${{ secrets.DOCKERHUB_USER }}/myapp:${{ github.sha }}
+                   ${{ vars.DOCKERHUB_USER }}/myapp:${{ github.ref_name }}
+                   ${{ vars.DOCKERHUB_USER }}/myapp:latest
+                   ${{ vars.DOCKERHUB_USER }}/myapp:${{ github.sha }}
+                  #  ${{ secrets.DOCKERHUB_USER }}/myapp:${{ github.ref_name }}
+                  #  ${{ secrets.DOCKERHUB_USER }}/myapp:latest
+                  #  ${{ secrets.DOCKERHUB_USER }}/myapp:${{ github.sha }}
