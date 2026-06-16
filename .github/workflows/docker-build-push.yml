@@ -18,15 +18,15 @@ jobs:
             - name: Login to DockerHub
               uses: docker/login-action@v3
               with:
-                username: ${{ vars.DOCKERHUB_USER }}
-                password: ${{ secrets.DOCKERHUB_TOKEN }}
+              username: ${{ vars.DOCKERHUB_USER }}
+              password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-            - name: Build & push to Docker_Hub
+            - name: Build & push to Docker Hub
               uses: docker/build-push-action@v5
-              with: 
-                context: .
-                push: true
-                tags: |
-                   ${{ secrets.DOCKERHUB_USER }}/myapp:${{ github.ref_name }}
-                   ${{ secrets.DOCKERHUB_USER }}/myapp:latest
-                   ${{ secrets.DOCKERHUB_USER }}/myapp:${{ github.sha }}
+              with:
+              context: .
+              push: true
+              tags: |
+                ${{ vars.DOCKERHUB_USER }}/myapp:${{ github.ref_name }}
+                ${{ vars.DOCKERHUB_USER }}/myapp:latest
+                ${{ vars.DOCKERHUB_USER }}/myapp:${{ github.sha }}
