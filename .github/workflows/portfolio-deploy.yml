@@ -1,8 +1,6 @@
 name: portfolio
 on:
- push:
-    workflow_dispatch: 
-    # branches: [main]
+  workflow_dispatch:
     
 permissions:
   contents: read
