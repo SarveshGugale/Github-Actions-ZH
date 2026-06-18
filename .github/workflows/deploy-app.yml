@@ -9,7 +9,6 @@ jobs:
 
     env:
       DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
-      DOCKER_TAG: ${{ github.sha }}
 
     steps:
       - name: Checkout Code
@@ -19,4 +18,5 @@ jobs:
         run: |
           docker pull sarvesh01234/github-actions-app:latest
           docker compose down
-          docker compose up -d --build --force-recreate
+          docker compose up -d 
+          
