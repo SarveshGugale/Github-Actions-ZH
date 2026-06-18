@@ -24,9 +24,9 @@ jobs:
             - name: Build & push to Docker_Hub
               uses: docker/build-push-action@v5
               with:
-              context: .
-              push: true
-              tags: |
-              ${{ vars.DOCKERHUB_USER }}/github-actions-app:${{ github.ref_name }}
-              ${{ vars.DOCKERHUB_USER }}/github-actions-app:latest
-              ${{ vars.DOCKERHUB_USER }}/github-actions-app:${{ github.sha }}
+                context: .
+                push: true
+                tags: |
+                ${{ vars.DOCKERHUB_USER }}/github-actions-app:${{ github.ref_name }}
+                ${{ vars.DOCKERHUB_USER }}/github-actions-app:latest
+                ${{ vars.DOCKERHUB_USER }}/github-actions-app:${{ github.sha }}
