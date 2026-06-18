@@ -1,5 +1,5 @@
 services:
   web:
-    image: sarvesh01234/github-actions-app:latest
+    image: sarvesh01234/github-actions-app:${ DOCKER_TAG }
     ports:
       - "80:80"
