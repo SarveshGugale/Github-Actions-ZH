@@ -1,0 +1,13 @@
+name: Docker File Scan
+on:
+  workflow_call:
+jobs:
+   validate-dockerfile:
+        runs-on: ubuntu-latest
+
+        steps: 
+           - name: Checkout Code
+             uses: actions/checkout@v4
+
+           - name: Validate dockerfile
+             uses: hadolint/hadolint-action@v3.1.0  
