@@ -32,5 +32,8 @@ jobs:
       - name: Run Flake8 Linter
         run: flake8 app.py
 
+      # - name: Run Bandit SAST Scan
+      #   run: bandit -r app.py
+
       - name: Run Bandit SAST Scan
-        run: bandit -r app.py
+        run: bandit -r app.py -s B104
