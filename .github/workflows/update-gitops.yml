@@ -15,9 +15,8 @@ jobs:
       - name: Update Deployment Image
         run: |
           cd ai-bank-app-gitops-CD
-
-          sed -i 's|image: .*|image: sarvesh01234/ai-bankapp:'${{ github.sha }}'|' manifests/dev/deployment.yml
-
+          sed -i '/- name: bankapp/{n;s|image: .*|image: sarvesh01234/ai-bankapp:${{ github.sha }}|;}' manifests/dev/deployment.yml
+         
       - name: Commit and Push Changes
         run: |
           cd ai-bank-app-gitops-CD
