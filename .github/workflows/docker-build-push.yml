@@ -21,6 +21,6 @@ jobs:
               with:
                 context: .
                 push: true
-              tags: |
-                ${{ vars.DOCKERHUB_USER }}/ai-bankapp:latest
-                ${{ vars.DOCKERHUB_USER }}/ai-bankapp:${{ github.sha }}
+                tags: |
+                  ${{ vars.DOCKERHUB_USER }}/ai-bankapp:latest
+                  ${{ vars.DOCKERHUB_USER }}/ai-bankapp:${{ github.sha }}
