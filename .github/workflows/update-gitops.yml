@@ -1,7 +1,7 @@
 name: Update GitOps Repository
 
 on:
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   update-gitops:
@@ -12,7 +12,21 @@ jobs:
         run: |
           git clone https://x-access-token:${{ secrets.GITOPS_PAT }}@github.com/SarveshGugale/ai-bank-app-gitops-CD.git
 
-      - name: Verify Repository
+      - name: Update Deployment Image
         run: |
           cd ai-bank-app-gitops-CD
-          ls -R
+
+          sed -i 's|image: .*|image: sarvesh01234/ai-bankapp:'${{ github.sha }}'|' manifests/dev/deployment.yml
+
+      - name: Commit and Push Changes
+        run: |
+          cd ai-bank-app-gitops-CD
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add manifests/dev/deployment.yml
+
+          git commit -m "Update image to ${{ github.sha }}" || echo "No changes to commit"
+
+          git push
