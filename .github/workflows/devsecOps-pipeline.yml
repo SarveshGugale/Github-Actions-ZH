@@ -32,7 +32,25 @@ jobs:
     uses: ./.github/workflows/image-scan.yml
     secrets: inherit
 
-  update-gitops:
-    needs: [trivy]
+  deploy-dev:
+    needs: trivy
     uses: ./.github/workflows/update-gitops.yml
+    with:
+      environment:  dev
     secrets: inherit
+
+  deploy-stage:
+    needs: deploy-dev
+    environment: stage
+    uses: ./.github/workflows/update-gitops.yml
+    with:
+      environment:  stage
+    secrets: inherit
+
+  deploy-prod:
+    needs: deploy-stage
+    environment: production
+    uses: ./.github/workflows/update-gitops.yml
+    with:
+      environment:  prod
+    secrets: inherit  
