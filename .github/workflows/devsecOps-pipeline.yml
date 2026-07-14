@@ -33,22 +33,30 @@ jobs:
     secrets: inherit
 
   deploy-dev:
+    name: Deploy Dev
     needs: trivy
-    uses: ./.github/workflows/update-gitops.yml
-    with:
-      environment:  dev
-    secrets: inherit
+    runs-on: ubuntu-latest
 
-  deploy-stage:
-    needs: deploy-dev
-    uses: ./.github/workflows/update-gitops.yml
-    with:
-      environment:  stage
-    secrets: inherit
+    steps:
+      - name: Clone GitOps Repository
+        run: |
+          git clone https://x-access-token:${{ secrets.GITOPS_PAT }}@github.com/SarveshGugale/ai-bank-app-gitops-CD.git
 
-  deploy-prod:
-    needs: deploy-stage
-    uses: ./.github/workflows/update-gitops.yml
-    with:
-      environment:  prod
-    secrets: inherit  
+      - name: Update Dev Image
+        run: |
+          cd ai-bank-app-gitops-CD
+
+          sed -i '/- name: bankapp/{n;s|image: .*|image: sarvesh01234/ai-bankapp:${{ github.sha }}|;}' manifests/dev/deployment.yml
+
+      - name: Commit and Push
+        run: |
+          cd ai-bank-app-gitops-CD
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add manifests/dev/deployment.yml
+
+          git commit -m "Deploy Dev ${{ github.sha }}" || echo "No changes"
+
+          git push
