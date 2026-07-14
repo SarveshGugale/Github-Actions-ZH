@@ -41,7 +41,6 @@ jobs:
 
   deploy-stage:
     needs: deploy-dev
-    environment: stage
     uses: ./.github/workflows/update-gitops.yml
     with:
       environment:  stage
@@ -49,7 +48,6 @@ jobs:
 
   deploy-prod:
     needs: deploy-stage
-    environment: production
     uses: ./.github/workflows/update-gitops.yml
     with:
       environment:  prod
